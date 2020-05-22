@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MovieListViewController.swift
 //  MovieList
 //
 //  Created by Burak Şentürk on 22.05.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MovieListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
