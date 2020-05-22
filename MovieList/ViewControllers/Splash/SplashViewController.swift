@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 
-class SplashViewController: BaseViewController {
+final class SplashViewController: BaseViewController {
 
     @IBOutlet weak var splashTextLabel: UILabel!
 
@@ -17,11 +17,21 @@ class SplashViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(observeRemoteConfigLoad),
+                                               name: .didRemoteConfigLoaded,
+                                               object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         observeInternetConnection()
+    }
+
+    @objc
+    func observeRemoteConfigLoad() {
+        let text = RemoteConfigValues.splashText.getStringValue()
+        splashTextLabel.text = text
     }
 
     //MARK: - Internet Connection
@@ -56,15 +66,19 @@ class SplashViewController: BaseViewController {
 
     private func navigateMainScreen() {
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [unowned self] in
-            let movieListViewController = MovieListViewController()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            let movieListViewController = MovieListViewController(nibName: "MovieListViewController",
+                                                                  bundle: nil)
 
             let navigationController = UINavigationController(rootViewController: movieListViewController)
 
-            self.present(navigationController,
-                         animated: false,
-                         completion: nil)
+            self?.presentViewController(viewController: navigationController,
+                         animated: true)
         }
+    }
+
+    deinit {
+        print("deinit..")
     }
 
 }

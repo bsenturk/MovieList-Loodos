@@ -24,4 +24,10 @@ class BaseViewController: UIViewController {
                      animated: true,
                      completion: nil)
     }
+
+    func presentViewController(viewController: UIViewController, animated: Bool) {
+        viewController.modalPresentationStyle = .overCurrentContext
+        viewController.modalTransitionStyle = .crossDissolve
+        present(viewController, animated: animated, completion: nil)
+    }
 }

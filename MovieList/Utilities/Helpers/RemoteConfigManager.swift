@@ -24,7 +24,7 @@ final class RemoteConfigManager {
             } else {
                 switch status {
                 case .success:
-                    print("sucess")
+                    NotificationCenter.default.post(name: .didRemoteConfigLoaded, object: nil)
                 case .failure:
                     print("failed")
                 default:
