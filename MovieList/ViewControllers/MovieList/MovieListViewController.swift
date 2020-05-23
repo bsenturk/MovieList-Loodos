@@ -8,16 +8,12 @@
 
 import UIKit
 
-final class MovieListViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+final class MovieListViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, UIViewControllerTransitioningDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    private var initialFrame: CGRect?
-    private lazy var animator: UIViewPropertyAnimator = {
-        return UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
-    }()
-
     private let viewModel = MovieListViewModel()
+    private let fadeAnimation = FadeAnimation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +21,7 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
         initializeClosures()
         viewModel.getMovieList()
         adjustNavigationBar()
+        navigationController?.delegate = self
     }
 
     private func adjustNavigationBar() {
@@ -61,23 +58,6 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
         }
     }
 
-    //MARK: - Animation
-
-    private func expand(cell: UICollectionViewCell) {
-        animator.addAnimations {
-            self.initialFrame = cell.frame
-
-            cell.frame = CGRect(x: self.collectionView.contentOffset.x,
-                                y: 0,
-                                width: self.collectionView.frame.width,
-                                height: 400)
-
-            self.view.layoutIfNeeded()
-        }
-
-        animator.startAnimation()
-    }
-
     //MARK: - Search Bar
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -109,14 +89,17 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let movieDetailViewController = MovieDetailViewController(nibName: "MovieDetailViewController",
-//                                                                  bundle: nil)
-//        navigationController?.pushViewController(movieDetailViewController, animated: true)
+        let movieDetailViewController = MovieDetailViewController(nibName: "MovieDetailViewController",
+                                                                  bundle: nil)
+        movieDetailViewController.transitioningDelegate = self
+        navigationController?.pushViewController(movieDetailViewController, animated: true)
 
-        let cell = collectionView.cellForItem(at: indexPath) ?? UICollectionViewCell()
+    }
+}
 
-        expand(cell: cell)
-
+extension MovieListViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return fadeAnimation
     }
 }
 

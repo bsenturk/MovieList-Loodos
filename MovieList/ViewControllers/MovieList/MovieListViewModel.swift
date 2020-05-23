@@ -22,7 +22,7 @@ class MovieListViewModel {
     var showNoResultPopup: (()->())?
 
 
-    func getMovieList(searchString: String = "bt") {
+    func getMovieList(searchString: String = "batman") {
         let movieListRequest = MovieListRequest()
 
         let queryItems = URLQueryItem(name: "apiKey",
