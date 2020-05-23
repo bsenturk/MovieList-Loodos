@@ -28,6 +28,13 @@ final class SplashViewController: BaseViewController {
         observeInternetConnection()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: .didRemoteConfigLoaded,
+                                                  object: nil)
+    }
+
     @objc
     func observeRemoteConfigLoad() {
         let text = RemoteConfigValues.splashText.getStringValue()
@@ -48,17 +55,17 @@ final class SplashViewController: BaseViewController {
     @objc
     func reachabilityChanged(note: Notification) {
 
-      let reachability = note.object as! Reachability
+        let reachability = note.object as! Reachability
 
-      switch reachability.connection {
-      case .wifi, .cellular:
-          navigateMainScreen()
-      case .unavailable:
-        showAlert(title: "Uyarı",
-                  message: "İnternet bağlantınız yok!",
-                  actionTitle: "Tamam")
-      case .none:
-        break
+        switch reachability.connection {
+        case .wifi, .cellular:
+            navigateMainScreen()
+        case .unavailable:
+            showAlert(title: "Uyarı",
+                      message: "İnternet bağlantınız yok!",
+                      actionTitle: "Tamam")
+        case .none:
+            break
         }
     }
 
@@ -73,12 +80,11 @@ final class SplashViewController: BaseViewController {
             let navigationController = UINavigationController(rootViewController: movieListViewController)
 
             self?.presentViewController(viewController: navigationController,
-                         animated: true)
+                                        animated: true,
+                                        completion: {
+                                            self?.splashTextLabel.isHidden = true
+            })
         }
-    }
-
-    deinit {
-        print("deinit..")
     }
 
 }

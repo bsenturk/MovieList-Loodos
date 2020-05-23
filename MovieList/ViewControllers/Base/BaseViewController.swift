@@ -27,13 +27,13 @@ class BaseViewController: UIViewController {
                      completion: nil)
     }
 
-    func presentViewController(viewController: UIViewController, animated: Bool) {
+    func presentViewController(viewController: UIViewController, animated: Bool, completion: (()->Void)?) {
         viewController.modalPresentationStyle = .overCurrentContext
         viewController.modalTransitionStyle = .crossDissolve
-        present(viewController, animated: animated, completion: nil)
+        present(viewController, animated: animated, completion: completion)
     }
 
-    private func create() {
+    private func createLoadingIndicator() {
 
         containerView.frame  = CGRect(origin: .zero,
                                       size: CGSize(width: 50, height: 50))
@@ -48,7 +48,7 @@ class BaseViewController: UIViewController {
 
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = UIColor.red.cgColor
+        shapeLayer.strokeColor = UIColor.gray.cgColor
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineCap = .round
         shapeLayer.strokeEnd = 0.75
@@ -65,7 +65,7 @@ class BaseViewController: UIViewController {
     }
 
     func showLodingIndicator() {
-        create()
+        createLoadingIndicator()
     }
 
     func hideLoadingIndicator() {

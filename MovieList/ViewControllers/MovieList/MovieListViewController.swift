@@ -17,12 +17,12 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLodingIndicator()
         initializeCollectionView()
         initializeClosures()
         viewModel.getMovieList()
         adjustNavigationBar()
         navigationController?.delegate = self
-        showLodingIndicator()
     }
 
     private func adjustNavigationBar() {
@@ -47,11 +47,13 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
         viewModel.reloadCollectionView = { [weak self] in
             DispatchQueue.main.async {
                 self?.collectionView.reloadData()
+                self?.hideLoadingIndicator()
             }
         }
 
         viewModel.showNoResultPopup = { [weak self] in
             DispatchQueue.main.async {
+                self?.hideLoadingIndicator()
                 self?.showAlert(title: "Uyarı",
                                 message: "Film bulunamadı.",
                                 actionTitle: "Tamam")
@@ -62,6 +64,7 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
     //MARK: - Search Bar
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        showLodingIndicator()
         viewModel.getMovieList(searchString: searchBar.text ?? "")
     }
 
@@ -96,6 +99,7 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
         let movie = viewModel.movie?.search[indexPath.item]
         movieDetailViewController.movieTitle = movie?.title ?? ""
         movieDetailViewController.year = movie?.year ?? ""
+        print(navigationController?.viewControllers)
         navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
 }

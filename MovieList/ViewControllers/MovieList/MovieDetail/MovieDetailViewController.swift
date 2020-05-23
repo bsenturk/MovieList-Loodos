@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class MovieDetailViewController: UIViewController {
+class MovieDetailViewController: BaseViewController {
 
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
@@ -18,6 +18,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var smallPosterImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var imdbRatingLabel: UILabel!
+    @IBOutlet weak var genreContainerView: UIView!
 
     private let viewModel = MovieDetailViewModel()
 
@@ -26,6 +27,7 @@ class MovieDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showLodingIndicator()
         applyStyling()
         initializeClosures()
         viewModel.getMovieDetail(title: movieTitle, year: year)
@@ -45,14 +47,15 @@ class MovieDetailViewController: UIViewController {
                 AnalyticsEvent.movieDetail(movieDetail?.title ?? "",
                                            movieDetail?.year ?? "",
                                            movieDetail?.plot ?? "").sendEvent()
+                self?.hideLoadingIndicator()
             }
         }
     }
 
     private func applyStyling() {
-        genreLabel.layer.borderWidth = 0.5
-        genreLabel.layer.borderColor = UIColor.white.cgColor
-        genreLabel.layer.cornerRadius = 10
+        genreContainerView.layer.borderWidth = 0.5
+        genreContainerView.layer.borderColor = UIColor.white.cgColor
+        genreContainerView.layer.cornerRadius = 10
 
         smallPosterImageView.layer.cornerRadius = 10
 

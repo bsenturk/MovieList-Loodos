@@ -26,7 +26,6 @@
 		FA2DA98E24794A1F0003C405 /* FadeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA98D24794A1F0003C405 /* FadeAnimation.swift */; };
 		FA2DA9902479554C0003C405 /* MovieDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA98F2479554C0003C405 /* MovieDetailRequest.swift */; };
 		FA2DA9942479558B0003C405 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA9932479558B0003C405 /* MovieDetail.swift */; };
-		FA2DA997247961AB0003C405 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA996247961AB0003C405 /* LoadingIndicator.swift */; };
 		FA2DA999247973CC0003C405 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA998247973CC0003C405 /* AnalyticsEvent.swift */; };
 		FA31C4B824783B910075A9E3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA31C4B724783B910075A9E3 /* BaseViewController.swift */; };
 		FA7EE77324782971007857BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EE77224782971007857BA /* AppDelegate.swift */; };
@@ -78,7 +77,6 @@
 		FA2DA98D24794A1F0003C405 /* FadeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeAnimation.swift; sourceTree = "<group>"; };
 		FA2DA98F2479554C0003C405 /* MovieDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRequest.swift; sourceTree = "<group>"; };
 		FA2DA9932479558B0003C405 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
-		FA2DA996247961AB0003C405 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		FA2DA998247973CC0003C405 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		FA31C4B724783B910075A9E3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FA7EE76F24782971007857BA /* MovieList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				FA2DA98D24794A1F0003C405 /* FadeAnimation.swift */,
-				FA2DA996247961AB0003C405 /* LoadingIndicator.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -519,7 +516,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA2DA997247961AB0003C405 /* LoadingIndicator.swift in Sources */,
 				FA0C1F322478591300897E8F /* UIView.swift in Sources */,
 				FA7EE77724782971007857BA /* MovieListViewController.swift in Sources */,
 				FA7EE77324782971007857BA /* AppDelegate.swift in Sources */,
