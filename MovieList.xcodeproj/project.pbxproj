@@ -203,8 +203,7 @@
 		FA2DA985247920C20003C405 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				FA2DA986247920D40003C405 /* MovieListRequest.swift */,
-				FA2DA98F2479554C0003C405 /* MovieDetailRequest.swift */,
+				FA2DA99A2479A1710003C405 /* MovieList */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -212,7 +211,6 @@
 		FA2DA988247920FF0003C405 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA2DA9922479557D0003C405 /* MovieDetail */,
 				FA2DA991247955750003C405 /* MovieList */,
 			);
 			path = Model;
@@ -222,16 +220,9 @@
 			isa = PBXGroup;
 			children = (
 				FA2DA989247926780003C405 /* Movie.swift */,
-			);
-			path = MovieList;
-			sourceTree = "<group>";
-		};
-		FA2DA9922479557D0003C405 /* MovieDetail */ = {
-			isa = PBXGroup;
-			children = (
 				FA2DA9932479558B0003C405 /* MovieDetail.swift */,
 			);
-			path = MovieDetail;
+			path = MovieList;
 			sourceTree = "<group>";
 		};
 		FA2DA995247961910003C405 /* Animations */ = {
@@ -240,6 +231,15 @@
 				FA2DA98D24794A1F0003C405 /* FadeAnimation.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		FA2DA99A2479A1710003C405 /* MovieList */ = {
+			isa = PBXGroup;
+			children = (
+				FA2DA986247920D40003C405 /* MovieListRequest.swift */,
+				FA2DA98F2479554C0003C405 /* MovieDetailRequest.swift */,
+			);
+			path = MovieList;
 			sourceTree = "<group>";
 		};
 		FA31C4B524783B6E0075A9E3 /* Base */ = {
@@ -287,8 +287,6 @@
 				FA2DA988247920FF0003C405 /* Model */,
 				FA7EE79824782B89007857BA /* ViewControllers */,
 				FA193AFF24784E9500C79C3F /* Utilities */,
-				FA7EE77824782971007857BA /* Main.storyboard */,
-				FA7EE77D24782975007857BA /* LaunchScreen.storyboard */,
 				FA7EE79A24782BAB007857BA /* Resources */,
 				FA7EE78024782975007857BA /* Info.plist */,
 				FAEFAE8924782F1400020419 /* GoogleService-Info.plist */,
@@ -329,6 +327,8 @@
 			isa = PBXGroup;
 			children = (
 				FA7EE77B24782975007857BA /* Assets.xcassets */,
+				FA7EE77824782971007857BA /* Main.storyboard */,
+				FA7EE77D24782975007857BA /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

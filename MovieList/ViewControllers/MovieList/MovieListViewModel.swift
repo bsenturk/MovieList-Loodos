@@ -21,7 +21,6 @@ class MovieListViewModel {
     var reloadCollectionView: (() -> ())?
     var showNoResultPopup: (()->())?
 
-
     func getMovieList(searchString: String = "batman") {
         let movieListRequest = MovieListRequest()
 

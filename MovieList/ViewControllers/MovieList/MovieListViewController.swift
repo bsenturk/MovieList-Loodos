@@ -99,14 +99,14 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
         let movie = viewModel.movie?.search[indexPath.item]
         movieDetailViewController.movieTitle = movie?.title ?? ""
         movieDetailViewController.year = movie?.year ?? ""
-        print(navigationController?.viewControllers)
         navigationController?.pushViewController(movieDetailViewController, animated: true)
     }
+
 }
 
 extension MovieListViewController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return fadeAnimation
     }
-}
 
+}
