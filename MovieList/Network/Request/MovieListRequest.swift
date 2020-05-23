@@ -1,5 +1,5 @@
 //
-//  MovieListViewModel.swift
+//  MovieListRequest.swift
 //  MovieList
 //
 //  Created by Burak Şentürk on 23.05.2020.
@@ -8,11 +8,6 @@
 
 import Foundation
 
-class MovieListViewModel {
+class MovieListRequest {
 
-
-    func getMovieList() {
-        
-    }
-    
 }
