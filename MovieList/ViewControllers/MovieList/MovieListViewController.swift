@@ -22,6 +22,7 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
         viewModel.getMovieList()
         adjustNavigationBar()
         navigationController?.delegate = self
+        showLodingIndicator()
     }
 
     private func adjustNavigationBar() {
@@ -92,8 +93,10 @@ final class MovieListViewController: BaseViewController, UICollectionViewDelegat
         let movieDetailViewController = MovieDetailViewController(nibName: "MovieDetailViewController",
                                                                   bundle: nil)
         movieDetailViewController.transitioningDelegate = self
+        let movie = viewModel.movie?.search[indexPath.item]
+        movieDetailViewController.movieTitle = movie?.title ?? ""
+        movieDetailViewController.year = movie?.year ?? ""
         navigationController?.pushViewController(movieDetailViewController, animated: true)
-
     }
 }
 

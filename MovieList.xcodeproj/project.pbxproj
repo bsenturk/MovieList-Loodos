@@ -24,6 +24,10 @@
 		FA2DA98A247926780003C405 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA989247926780003C405 /* Movie.swift */; };
 		FA2DA98C247929FD0003C405 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA98B247929FD0003C405 /* Constants.swift */; };
 		FA2DA98E24794A1F0003C405 /* FadeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA98D24794A1F0003C405 /* FadeAnimation.swift */; };
+		FA2DA9902479554C0003C405 /* MovieDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA98F2479554C0003C405 /* MovieDetailRequest.swift */; };
+		FA2DA9942479558B0003C405 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA9932479558B0003C405 /* MovieDetail.swift */; };
+		FA2DA997247961AB0003C405 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA996247961AB0003C405 /* LoadingIndicator.swift */; };
+		FA2DA999247973CC0003C405 /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DA998247973CC0003C405 /* AnalyticsEvent.swift */; };
 		FA31C4B824783B910075A9E3 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA31C4B724783B910075A9E3 /* BaseViewController.swift */; };
 		FA7EE77324782971007857BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EE77224782971007857BA /* AppDelegate.swift */; };
 		FA7EE77524782971007857BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7EE77424782971007857BA /* SceneDelegate.swift */; };
@@ -72,6 +76,10 @@
 		FA2DA989247926780003C405 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		FA2DA98B247929FD0003C405 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FA2DA98D24794A1F0003C405 /* FadeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeAnimation.swift; sourceTree = "<group>"; };
+		FA2DA98F2479554C0003C405 /* MovieDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailRequest.swift; sourceTree = "<group>"; };
+		FA2DA9932479558B0003C405 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		FA2DA996247961AB0003C405 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		FA2DA998247973CC0003C405 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		FA31C4B724783B910075A9E3 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FA7EE76F24782971007857BA /* MovieList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7EE77224782971007857BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,10 +164,12 @@
 		FA193AFF24784E9500C79C3F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				FA2DA995247961910003C405 /* Animations */,
 				FAEFAE8B24782FF200020419 /* Helpers */,
 				FA193B0024784EA100C79C3F /* Extensions */,
 				FA193B0324784FBA00C79C3F /* RemoteConfigValues.swift */,
 				FA2DA98B247929FD0003C405 /* Constants.swift */,
+				FA2DA998247973CC0003C405 /* AnalyticsEvent.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -196,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				FA2DA986247920D40003C405 /* MovieListRequest.swift */,
+				FA2DA98F2479554C0003C405 /* MovieDetailRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -203,9 +214,35 @@
 		FA2DA988247920FF0003C405 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA2DA989247926780003C405 /* Movie.swift */,
+				FA2DA9922479557D0003C405 /* MovieDetail */,
+				FA2DA991247955750003C405 /* MovieList */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FA2DA991247955750003C405 /* MovieList */ = {
+			isa = PBXGroup;
+			children = (
+				FA2DA989247926780003C405 /* Movie.swift */,
+			);
+			path = MovieList;
+			sourceTree = "<group>";
+		};
+		FA2DA9922479557D0003C405 /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FA2DA9932479558B0003C405 /* MovieDetail.swift */,
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		FA2DA995247961910003C405 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				FA2DA98D24794A1F0003C405 /* FadeAnimation.swift */,
+				FA2DA996247961AB0003C405 /* LoadingIndicator.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		FA31C4B524783B6E0075A9E3 /* Base */ = {
@@ -304,7 +341,6 @@
 			children = (
 				FAEFAE8C2478300800020419 /* DependencyManager.swift */,
 				FAEFAE8E2478340E00020419 /* RemoteConfigManager.swift */,
-				FA2DA98D24794A1F0003C405 /* FadeAnimation.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -483,20 +519,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2DA997247961AB0003C405 /* LoadingIndicator.swift in Sources */,
 				FA0C1F322478591300897E8F /* UIView.swift in Sources */,
 				FA7EE77724782971007857BA /* MovieListViewController.swift in Sources */,
 				FA7EE77324782971007857BA /* AppDelegate.swift in Sources */,
 				FA0C1F3624785B9E00897E8F /* MovieCell.swift in Sources */,
 				FA2DA97E247883780003C405 /* MovieDetailViewController.swift in Sources */,
 				FA2DA9842479110A0003C405 /* Network.swift in Sources */,
+				FA2DA999247973CC0003C405 /* AnalyticsEvent.swift in Sources */,
 				FA2DA987247920D40003C405 /* MovieListRequest.swift in Sources */,
 				FAEFAE8D2478300800020419 /* DependencyManager.swift in Sources */,
 				FA7EE77524782971007857BA /* SceneDelegate.swift in Sources */,
 				FA193B0424784FBA00C79C3F /* RemoteConfigValues.swift in Sources */,
 				FA193B0224784EB900C79C3F /* NSNotificationName.swift in Sources */,
+				FA2DA9902479554C0003C405 /* MovieDetailRequest.swift in Sources */,
 				FA2DA98E24794A1F0003C405 /* FadeAnimation.swift in Sources */,
 				FA7EE79624782B83007857BA /* SplashViewController.swift in Sources */,
 				FA31C4B824783B910075A9E3 /* BaseViewController.swift in Sources */,
+				FA2DA9942479558B0003C405 /* MovieDetail.swift in Sources */,
 				FAEFAE8F2478340E00020419 /* RemoteConfigManager.swift in Sources */,
 				FA2DA981247883910003C405 /* MovieDetailViewModel.swift in Sources */,
 				FA2DA979247882FA0003C405 /* MovieListViewModel.swift in Sources */,
