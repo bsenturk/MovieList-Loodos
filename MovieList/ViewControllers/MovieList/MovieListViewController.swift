@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MovieListViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+final class MovieListViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -17,15 +17,48 @@ final class MovieListViewController: UIViewController, UICollectionViewDelegate,
         return UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut)
     }()
 
+    private let viewModel = MovieListViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeCollectionView()
+        initializeClosures()
+        viewModel.getMovieList()
+        adjustNavigationBar()
+    }
+
+    private func adjustNavigationBar() {
+        navigationItem.title = "Movies"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
     }
 
     private func initializeCollectionView() {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MovieCell().instantiateNib(), forCellWithReuseIdentifier: "MovieCell")
+        collectionView.backgroundColor = UIColor(red: 17/255,
+                                                 green: 18/255,
+                                                 blue: 30/255,
+                                                 alpha: 1)
+    }
+
+    private func initializeClosures() {
+        viewModel.reloadCollectionView = { [weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
+
+        viewModel.showNoResultPopup = { [weak self] in
+            DispatchQueue.main.async {
+                self?.showAlert(title: "Uyarı",
+                                message: "Film bulunamadı.",
+                                actionTitle: "Tamam")
+            }
+        }
     }
 
     //MARK: - Animation
@@ -45,15 +78,21 @@ final class MovieListViewController: UIViewController, UICollectionViewDelegate,
         animator.startAnimation()
     }
 
+    //MARK: - Search Bar
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.getMovieList(searchString: searchBar.text ?? "")
+    }
+
     //MARK: - Collection View Delegate & Data Source
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.itemsCount()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
-        cell.backgroundColor = .red
+        cell.movie = viewModel.movie?.search[indexPath.item]
         return cell
     }
 
@@ -62,11 +101,11 @@ final class MovieListViewController: UIViewController, UICollectionViewDelegate,
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 40
+        return 20
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
+        return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -18,6 +18,16 @@ protocol RequestBuilder {
     var queryItems: [URLQueryItem]? { get }
 }
 
+extension RequestBuilder {
+    var scheme: String {
+        return "https"
+    }
+
+    var host: String {
+        return "www.omdbapi.com"
+    }
+}
+
 enum HTTPMethod: String {
     case get
     case post

@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="250"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gS7-bX-boM">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gS7-bX-boM">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="250"/>
                     </imageView>
                 </subviews>
@@ -29,6 +29,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="50" height="189"/>
+            <connections>
+                <outlet property="movieImageView" destination="gS7-bX-boM" id="yMw-C9-pOW"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="57.254464285714285"/>
         </collectionViewCell>
     </objects>
